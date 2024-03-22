@@ -9,7 +9,6 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import AppFooter from "./components/AppFooter.vue";
 import Navbar from "./components/Navbar.vue";
 
 export default {
