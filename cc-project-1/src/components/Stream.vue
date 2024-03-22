@@ -1,15 +1,17 @@
 <template>
   <v-container fluid>
-    <v-row justify="center">
-      <v-col cols="12" md="6">
-        <video ref="video" autoplay></video>
-        <v-btn color="primary" @click="startCamera">Kamera starten</v-btn>
-        <v-btn color="primary" @click="stopCamera">Kamera stoppen</v-btn>
-        <v-btn color="primary" @click="captureImage">Bild aufnehmen</v-btn>
-        <canvas ref="canvas" style="display: none"></canvas>
-      </v-col>
-    </v-row>
+    <video ref="video" height="100%" width="100%" autoplay></video>
   </v-container>
+  <v-btn color="primary" @click="startCamera" class="buttonStartCamera"
+    >Kamera starten</v-btn
+  >
+  <v-btn color="primary" @click="stopCamera" class="buttonStopCamera"
+    >Kamera stoppen</v-btn
+  >
+  <v-btn color="primary" @click="captureImage" class="buttonCaptureImage"
+    >Bild aufnehmen</v-btn
+  >
+  <canvas ref="canvas" style="display: none"></canvas>
 </template>
 
 <script>
@@ -49,5 +51,25 @@ export default {
 </script>
 
 <style>
-/* Stildefinitionen hier hinzufügen, wenn benötigt */
+video {
+  width: 100%;
+  height: calc(
+    100vw * 9 / 16
+  ); /* Berechnet die Höhe basierend auf dem Seitenverhältnis 16:9 */
+}
+.buttonStartCamera {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.buttonStopCamera {
+  position: absolute;
+  bottom: 10px;
+  left: 210px;
+}
+.buttonCaptureImage {
+  position: absolute;
+  bottom: 10px;
+  left: 410px;
+}
 </style>
