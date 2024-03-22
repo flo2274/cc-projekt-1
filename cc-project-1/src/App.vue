@@ -9,11 +9,11 @@
       />
 
       <SlidingGallery :images="capturedImages" />
-      <v-btn color="primary" @click="toggleCamera" class="buttonStartCamera"
+      <v-btn color="primary" @click="toggleCamera" class="buttonToggleCamera"
         >Toggle Camera</v-btn
       >
       <v-btn color="primary" @click="takeAPicture" class="buttonCaptureImage"
-        >Bild aufnehmen</v-btn
+        >Take Picture</v-btn
       >
     </v-main>
   </v-app>
@@ -49,3 +49,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.buttonToggleCamera {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+.buttonCaptureImage {
+  position: fixed;
+  bottom: 10px;
+  left: 240px;
+}
+</style>

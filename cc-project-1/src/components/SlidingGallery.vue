@@ -2,7 +2,7 @@
   <v-container fluid>
     <div class="image-container">
       <img
-        v-for="(imageDataURL, index) in lastTenImages"
+        v-for="(imageDataURL, index) in displayedImages"
         :key="index"
         :src="imageDataURL"
         alt="Aufgenommenes Bild"
@@ -21,8 +21,9 @@ export default {
     },
   },
   computed: {
-    lastTenImages() {
-      return this.images.slice(-12); // Begrenze die Anzahl der angezeigten Bilder auf die letzten 10
+    displayedImages() {
+      const startIndex = Math.max(0, this.images.length - 12); // Index des ersten Bildes, das angezeigt werden soll
+      return this.images.slice(startIndex); // Begrenze die angezeigten Bilder auf die letzten 12
     },
   },
 };

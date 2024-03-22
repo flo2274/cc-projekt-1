@@ -5,8 +5,9 @@
         <v-icon>mdi mdi-camera</v-icon>
       </v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase">
-        <span class="font-weight-light">Live Foto</span>
-        <span class="font-weight-bold text-primary title"> Gallery </span>
+        <span class="font-weight-light">Foto</span>
+
+        <!-- <span class="font-weight-bold text-primary title"> Gallery </span> -->
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn>
