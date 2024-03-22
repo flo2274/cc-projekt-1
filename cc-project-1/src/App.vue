@@ -1,13 +1,23 @@
 <template>
   <v-app>
+    <Navbar />
     <v-main>
-      <HelloWorld />
+      <!-- <HelloWorld /> -->
     </v-main>
-
-    <AppFooter />
   </v-app>
 </template>
 
-<script setup>
-  //
+<script>
+import HelloWorld from "./components/HelloWorld.vue";
+import AppFooter from "./components/AppFooter.vue";
+import Navbar from "./components/Navbar.vue";
+
+export default {
+  name: "App",
+  components: {
+    HelloWorld,
+    AppFooter,
+    Navbar,
+  },
+};
 </script>
