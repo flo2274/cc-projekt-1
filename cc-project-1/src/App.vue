@@ -2,22 +2,28 @@
   <v-app>
     <Navbar />
     <v-main>
-      <Stream />
+      <Stream @imageCaptured="onImageCaptured" />
+      <SlidingGallery :images="capturedImages" />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Navbar from "./components/Navbar.vue";
-import Stream from "./components/Stream.vue";
+import SlidingGallery from "./components/SlidingGallery.vue";
 
 export default {
-  name: "App",
   components: {
-    HelloWorld,
-    Navbar,
-    Stream,
+    SlidingGallery,
+  },
+  data() {
+    return {
+      capturedImages: [],
+    };
+  },
+  methods: {
+    onImageCaptured(imageDataURL) {
+      this.capturedImages.push(imageDataURL); // Aufgenommenes Bild zur Liste der aufgenommenen Bilder hinzufügen
+    },
   },
 };
 </script>

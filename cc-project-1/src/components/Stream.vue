@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  emits: ["imageCaptured"], // Deklariere das imageCaptured-Ereignis
   methods: {
     async startCamera() {
       try {
@@ -44,7 +45,8 @@ export default {
       // Hier kannst du mit dem aufgenommenen Bild auf dem Canvas weiterarbeiten
       // Zum Beispiel kannst du das Bild in ein Daten-URL umwandeln und speichern oder anzeigen
       const imageDataURL = canvas.toDataURL("image/png");
-      console.log("Aufgenommenes Bild:", imageDataURL);
+      this.$emit("imageCaptured", imageDataURL);
+      console.log("Bild aufgenommen:", imageDataURL);
     },
   },
 };
