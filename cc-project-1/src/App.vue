@@ -3,6 +3,7 @@
     <Navbar />
     <v-main>
       <Stream @imageCaptured="onImageCaptured" />
+
       <SlidingGallery :images="capturedImages" />
     </v-main>
   </v-app>
