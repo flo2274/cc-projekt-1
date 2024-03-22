@@ -1,0 +1,75 @@
+<template>
+  <v-container fluid>
+    <video ref="video" height="100%" width="100%" autoplay></video>
+  </v-container>
+  <v-btn color="primary" @click="startCamera" class="buttonStartCamera"
+    >Kamera starten</v-btn
+  >
+  <v-btn color="primary" @click="stopCamera" class="buttonStopCamera"
+    >Kamera stoppen</v-btn
+  >
+  <v-btn color="primary" @click="captureImage" class="buttonCaptureImage"
+    >Bild aufnehmen</v-btn
+  >
+  <canvas ref="canvas" style="display: none"></canvas>
+</template>
+
+<script>
+export default {
+  methods: {
+    async startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        this.$refs.video.srcObject = stream;
+      } catch (error) {
+        console.error("Fehler beim Zugriff auf die Kamera:", error);
+      }
+    },
+    stopCamera() {
+      const stream = this.$refs.video.srcObject;
+      const tracks = stream.getTracks();
+      tracks.forEach((track) => track.stop());
+      this.$refs.video.srcObject = null;
+    },
+    captureImage() {
+      const video = this.$refs.video;
+      const canvas = this.$refs.canvas;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas
+        .getContext("2d")
+        .drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Hier kannst du mit dem aufgenommenen Bild auf dem Canvas weiterarbeiten
+      // Zum Beispiel kannst du das Bild in ein Daten-URL umwandeln und speichern oder anzeigen
+      const imageDataURL = canvas.toDataURL("image/png");
+      console.log("Aufgenommenes Bild:", imageDataURL);
+    },
+  },
+};
+</script>
+
+<style>
+video {
+  width: 100%;
+  height: calc(
+    100vw * 9 / 16
+  ); /* Berechnet die Höhe basierend auf dem Seitenverhältnis 16:9 */
+}
+.buttonStartCamera {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.buttonStopCamera {
+  position: absolute;
+  bottom: 10px;
+  left: 210px;
+}
+.buttonCaptureImage {
+  position: absolute;
+  bottom: 10px;
+  left: 410px;
+}
+</style>
