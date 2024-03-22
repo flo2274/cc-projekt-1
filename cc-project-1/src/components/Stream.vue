@@ -2,21 +2,38 @@
   <v-container fluid>
     <video ref="video" height="100%" width="100%" autoplay></video>
   </v-container>
-  <v-btn color="primary" @click="startCamera" class="buttonStartCamera"
-    >Kamera starten</v-btn
-  >
-  <v-btn color="primary" @click="stopCamera" class="buttonStopCamera"
-    >Kamera stoppen</v-btn
-  >
-  <v-btn color="primary" @click="captureImage" class="buttonCaptureImage"
-    >Bild aufnehmen</v-btn
-  >
   <canvas ref="canvas" style="display: none"></canvas>
 </template>
 
 <script>
 export default {
   emits: ["imageCaptured"], // Deklariere das imageCaptured-Ereignis
+  props: {
+    pictureTaken: {
+      type: Boolean,
+      default: false,
+    },
+    cameraActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  watch: {
+    pictureTaken() {
+      console.log("Picture Taken: ", this.pictureTaken);
+      if (this.pictureTaken) {
+        this.captureImage();
+      }
+    },
+    cameraActive() {
+      console.log("Camera Active: ", this.cameraActive);
+      if (this.cameraActive) {
+        this.startCamera();
+      } else {
+        this.stopCamera();
+      }
+    },
+  },
   methods: {
     async startCamera() {
       try {

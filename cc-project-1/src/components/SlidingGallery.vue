@@ -1,19 +1,14 @@
 <template>
   <v-container fluid>
-    <v-carousel
-      v-model="currentIndex"
-      hide-delimiters
-      hide-controls
-      style="max-height: 500px; overflow: hidden"
-    >
-      <v-carousel-item v-for="(imageDataURL, index) in images" :key="index">
-        <img
-          :src="imageDataURL"
-          alt="Aufgenommenes Bild"
-          style="width: 100%; height: 100%"
-        />
-      </v-carousel-item>
-    </v-carousel>
+    <div class="image-container">
+      <img
+        v-for="(imageDataURL, index) in lastTenImages"
+        :key="index"
+        :src="imageDataURL"
+        alt="Aufgenommenes Bild"
+        class="image"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -25,14 +20,24 @@ export default {
       default: () => [],
     },
   },
-  data() {
-    return {
-      currentIndex: 0,
-    };
+  computed: {
+    lastTenImages() {
+      return this.images.slice(-12); // Begrenze die Anzahl der angezeigten Bilder auf die letzten 10
+    },
   },
 };
 </script>
 
 <style>
-/* Stildefinitionen hier hinzufügen, wenn benötigt */
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image {
+  width: 100px; /* Anpassen der Bildgröße */
+  height: auto; /* Anpassen der Bildgröße */
+  margin: 5px; /* Anpassen des Abstands zwischen den Bildern */
+}
 </style>
