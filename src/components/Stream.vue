@@ -55,23 +55,14 @@ export default {
     captureImage() {
       const video = this.$refs.video;
       const canvas = this.$refs.canvas;
-<<<<<<< HEAD
-      canvas.width = video.videoWidth / 5;
-      canvas.height = video.videoHeight / 5;
-=======
       canvas.width = video.videoWidth / 4;
       canvas.height = video.videoHeight / 4;
->>>>>>> 53e08f28ce8afebed3a113bbf37e7c89b595b788
       canvas
         .getContext("2d")
         .drawImage(video, 0, 0, canvas.width, canvas.height);
       // Hier kannst du mit dem aufgenommenen Bild auf dem Canvas weiterarbeiten
       // Zum Beispiel kannst du das Bild in ein Daten-URL umwandeln und speichern oder anzeigen
-<<<<<<< HEAD
-      const imageDataURL = canvas.toDataURL("image/png", 0.5);
-=======
       const imageDataURL = canvas.toDataURL("image/png", 0.25);
->>>>>>> 53e08f28ce8afebed3a113bbf37e7c89b595b788
 
       this.$emit("imageCaptured");
 
