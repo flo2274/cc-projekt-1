@@ -49,20 +49,20 @@ export default {
     stopCamera() {
       const stream = this.$refs.video.srcObject;
       const tracks = stream.getTracks();
-      tracks.forEach((track) => track.stop());
+      tracks.forEach(track => track.stop());
       this.$refs.video.srcObject = null;
     },
     captureImage() {
       const video = this.$refs.video;
       const canvas = this.$refs.canvas;
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      canvas.width = video.videoWidth / 4;
+      canvas.height = video.videoHeight / 4;
       canvas
         .getContext("2d")
         .drawImage(video, 0, 0, canvas.width, canvas.height);
       // Hier kannst du mit dem aufgenommenen Bild auf dem Canvas weiterarbeiten
       // Zum Beispiel kannst du das Bild in ein Daten-URL umwandeln und speichern oder anzeigen
-      const imageDataURL = canvas.toDataURL("image/png");
+      const imageDataURL = canvas.toDataURL("image/png", 0.25);
 
       // this.$emit("imageCaptured", imageDataURL);-------
 
