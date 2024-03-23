@@ -48,13 +48,23 @@ export default {
         );
         const imagesData = response.data;
         console.log("Empfangene Daten:", imagesData);
+        for (let imageData of imagesData) {
+          if (imageData.url != undefined) {
+            console.log("Bild-Daten:", imageData.url);
 
-        const imageResponse = await axios.get(
-          "http://cc-project-1-backend.azurewebsites.net/images/1711205923054.png",
-          {
-            responseType: "blob",
+            const imageResponse = await axios.get(imageData.url, {
+              responseType: "blob",
+            });
+            console.log("Bild-Daten:", imageResponse);
+            // Bildobjekt erstellen
+            const image = {
+              src: URL.createObjectURL(imageResponse.data),
+              alt: imageData.filename, // oder alternativen Alt-Text hier einfügen
+            };
+            // Bild zum Array hinzufügen
+            this.images.push(image);
           }
-        );
+        }
       } catch (error) {
         console.error("Fehler beim Abrufen der Bilder vom Server:", error);
       }
