@@ -29,7 +29,7 @@
           </v-col>
         </v-row>
       </v-container>
-      <SlidingGallery :images="capturedImages" />
+      <SlidingGallery :pictureTaken="takePicture" />
     </v-main>
   </v-app>
 </template>
