@@ -62,11 +62,26 @@ export default {
       // Hier kannst du mit dem aufgenommenen Bild auf dem Canvas weiterarbeiten
       // Zum Beispiel kannst du das Bild in ein Daten-URL umwandeln und speichern oder anzeigen
       const imageDataURL = canvas.toDataURL("image/png");
-      this.$emit("imageCaptured", imageDataURL);
+
+      // this.$emit("imageCaptured", imageDataURL);-------
+
+      this.sendImage(imageDataURL); // Sendet das Bild an den Server
       console.log("Bild aufgenommen:", imageDataURL);
     },
+
+    async sendImage(imageDataURL) {
+      try {
+        // Sende das Bild per Axios an den Server
+        const response = await axios.post('http://localhost:3000/upload', {
+          image: imageDataURL
+        });
+        console.log('Bild erfolgreich an den Server gesendet:', response.data);
+      } catch (error) {
+        console.error('Fehler beim Senden des Bildes an den Server:', error);
+    }
   },
-};
+}
+}
 </script>
 
 <style>
