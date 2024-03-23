@@ -57,8 +57,7 @@ export default {
       this.takePicture = true;
       console.log("Picture Taken: ", this.takePicture);
     },
-    onImageCaptured(imageDataURL) {
-      this.capturedImages.push(imageDataURL);
+    onImageCaptured() {
       this.takePicture = false;
     },
   },
