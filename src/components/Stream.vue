@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   emits: ["imageCaptured"], // Deklariere das imageCaptured-Ereignis
   props: {
