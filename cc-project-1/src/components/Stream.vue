@@ -76,19 +76,4 @@ video {
     100vw * 9 / 16
   ); /* Berechnet die Höhe basierend auf dem Seitenverhältnis 16:9 */
 }
-.buttonStartCamera {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.buttonStopCamera {
-  position: absolute;
-  bottom: 10px;
-  left: 210px;
-}
-.buttonCaptureImage {
-  position: absolute;
-  bottom: 10px;
-  left: 410px;
-}
 </style>

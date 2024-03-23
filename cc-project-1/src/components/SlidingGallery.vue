@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     displayedImages() {
-      const startIndex = Math.max(0, this.images.length - 12); // Index des ersten Bildes, das angezeigt werden soll
+      const startIndex = Math.max(0, this.images.length - 9); // Index des ersten Bildes, das angezeigt werden soll
       return this.images.slice(startIndex); // Begrenze die angezeigten Bilder auf die letzten 12
     },
   },
