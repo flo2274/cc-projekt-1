@@ -72,16 +72,19 @@ export default {
     async sendImage(imageDataURL) {
       try {
         // Sende das Bild per Axios an den Server
-        const response = await axios.post('http://localhost:3000/upload', {
-          image: imageDataURL
-        });
-        console.log('Bild erfolgreich an den Server gesendet:', response.data);
+        const response = await axios.post(
+          "https://cc-project-1-backend.azurewebsites.net/upload",
+          {
+            image: imageDataURL,
+          }
+        );
+        console.log("Bild erfolgreich an den Server gesendet:", response.data);
       } catch (error) {
-        console.error('Fehler beim Senden des Bildes an den Server:', error);
-    }
+        console.error("Fehler beim Senden des Bildes an den Server:", error);
+      }
+    },
   },
-}
-}
+};
 </script>
 
 <style>
