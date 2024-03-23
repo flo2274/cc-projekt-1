@@ -1,20 +1,35 @@
 <template>
   <v-app>
     <Navbar />
-    <v-main>
+    <v-main class="pa-3">
       <Stream
         @imageCaptured="onImageCaptured"
         :pictureTaken="takePicture"
         :cameraActive="cameraActive"
       />
-
+      <v-container fluid>
+        <v-row justify="center">
+          <v-col cols="6" class="text-center">
+            <v-btn
+              color="primary"
+              @click="toggleCamera"
+              class="buttonToggleCamera"
+              x-small
+              >Toggle Camera</v-btn
+            >
+          </v-col>
+          <v-col cols="6" class="text-center">
+            <v-btn
+              color="primary"
+              @click="takeAPicture"
+              class="buttonCaptureImage"
+              x-small
+              >Take Picture</v-btn
+            >
+          </v-col>
+        </v-row>
+      </v-container>
       <SlidingGallery :images="capturedImages" />
-      <v-btn color="primary" @click="toggleCamera" class="buttonToggleCamera"
-        >Toggle Camera</v-btn
-      >
-      <v-btn color="primary" @click="takeAPicture" class="buttonCaptureImage"
-        >Take Picture</v-btn
-      >
     </v-main>
   </v-app>
 </template>
@@ -50,15 +65,4 @@ export default {
 };
 </script>
 
-<style>
-.buttonToggleCamera {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-}
-.buttonCaptureImage {
-  position: fixed;
-  bottom: 10px;
-  left: 240px;
-}
-</style>
+<style></style>
